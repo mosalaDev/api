@@ -81,7 +81,6 @@ exports.logout_user = async (req, res, next) => {
         const user = req.user;
         const token = req.headers['authorization'];
 
-        console.log(user.nom, "token" + token);
         if (!user || !token) {
             return next({
                 code: 'auth/failed',
