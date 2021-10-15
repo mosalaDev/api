@@ -81,24 +81,18 @@ exports.logout_user = async (req, res, next) => {
         const user = req.user;
         const token = req.headers['authorization'];
 
-        console.log(user.nom, "tokn" + token);
+        console.log(user.nom, "token" + token);
         if (!user || !token) {
             return next({
                 code: 'auth/failed',
-                message: 'Numéro de téléphone ou mot de passe incorect'
+                message: 'Aucun utilisateur n\'est connecté.'
             });
         }
 
-        jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, async (error, user) => {
-            if (error) {
-                return next(error);
+        await Session.destroy({
+            where: {
+                token: token
             }
-
-            await Session.destroy({
-                where: {
-                    token: token
-                }
-            });
         });
 
         res.clearCookie('aid');
