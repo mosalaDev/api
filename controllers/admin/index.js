@@ -73,6 +73,20 @@ exports.login_admin = async (req, res, next) => {
     })(req, res, next);
 };
 
+exports.get_conected_admin = async (req, res, next) => {
+    try {
+        const user = req.user;
+
+        if (!user) {
+            return next(user_unauthenticated);
+        }
+
+        return res.json(user);
+    } catch (err) {
+        next(err);
+    }
+};
+
 exports.add_poste = async (req, res, next) => {
     try {
         const a = await Admin.findByPk(req.params.adminId);

@@ -21,35 +21,6 @@ router.get('/reservations', userControllers.get_user_reservations);
 
 router.get('/devis', userControllers.get_user_devis);
 
-router.get('/', async (req, res, next) => {
-    try {
-        const user = req.user;
-
-        if (!user) {
-            return next(user_unauthenticated);
-        }
-
-        const reservations = await Res.count({
-            where: {
-                userId: user.id
-            }
-        });
-        const devis = await Devis.count({
-            where: {
-                userId: user.id
-            }
-        });
-
-        return res.json({
-            ...user.dataValues,
-            reservations,
-            devis
-        });
-    } catch (err) {
-        next(err);
-    }
-});
-
 /**
  * Phone number verification
  */

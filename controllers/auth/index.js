@@ -41,6 +41,9 @@ exports.login_user = async (req, res, next) => {
         // Set a cookie
         res.cookie('aid', tokens.refreshToken, { httpOnly: true, sameSite: 'None', secure: true });
 
+        // Set the user
+        res.user = user;
+
         return res.json({
             tokens,
             user
