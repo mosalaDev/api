@@ -42,7 +42,7 @@ exports.login_user = async (req, res, next) => {
         res.cookie('aid', tokens.refreshToken, { httpOnly: true, sameSite: 'None', secure: true });
 
         // Set the user
-        res.user = user;
+        req.user = user;
 
         return res.json({
             tokens,
