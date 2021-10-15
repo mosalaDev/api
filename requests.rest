@@ -1,0 +1,25 @@
+@hostname = localhost
+@port = 5500
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+###
+
+POST http://{{host}}/auth/login
+Content-Type: {{contentType}}
+
+{
+    "username": "0971178768",
+    "password": "moimeme2021"
+}
+
+###
+
+POST http://{{host}}/auth/refresh_token
+Content-Type: {{contentType}}
+
+###
+
+GET http://{{host}}/service
+Content-Type: {{contentType}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA3YTVlZWRiLTQxZTgtNDgxZC1hMTVkLTFiMTdiNDMzMTUxYyIsInVzZXJuYW1lIjoiMDk3MTE3ODc2OCIsImlhdCI6MTYzMzQ5ODczNywiZXhwIjoxNjMzNjcxNTM3fQ.QqOt5VQ0xC0dgtGXnG1plmRY0EMM3H10_FF9thT46t8

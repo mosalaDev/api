@@ -1,0 +1,35 @@
+div(style="font-family:arial")
+    div(style="max-width:420px;margin:auto;color:#333")
+        div(style="max-width:420px;margin:auto;padding:30px 15px;border:1px solid #eaeaea;border-radius:10px")
+            div(style="text-align:center;padding:0 0 15px 0;border-bottom:1px solid #eaeaea;")
+                h2(style="color: #0020b1;margin-bottom:10px") Mosalamaboko
+                h3 Reservation - #{service}
+                div(style="text-align:center") 
+                    if urgence
+                        span(style="width:15px;height:15px;background-color:#ff7a00;color:#fff;font-weight:bold;border-radius:50%;padding:10px;display:inline-block") !
+                        p(style="color:#ff7a00;font-weight:bold") Urgence
+                    else 
+                        span(style="width:15px;height:15px;background-color:#0020b1;color:#fff;font-weight:bold;border-radius:50%;padding:10px;display:inline-block") !
+            div(style="padding:10px 0;")
+                div
+                    div
+                        p
+                            span Client:   
+                            strong #{tel}
+                        p
+                            span Adresse:   
+                            strong #{address}
+                        p
+                            span Date des travaux:   
+                            strong #{date}
+                    div
+                        h5 Travaux reservés
+                        ul(style="margin:0;padding:0") 
+                            each work in works
+                                li= work.nom_travail
+                        if details 
+                            h5 Autres détails 
+                            p= details
+        div(style="max-width:420px;margin:auto;text-align:center") 
+            p Cet email est une notification venant de mosalamaboko.com pour vous informer qu'un client vient d'envoyer sa reservation.
+            p © 2021 mosalamaboko
