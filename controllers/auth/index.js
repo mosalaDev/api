@@ -83,8 +83,8 @@ exports.logout_user = async (req, res, next) => {
 
         if (!user || !token) {
             return next({
-                code: 'auth/failed',
-                message: 'Aucun utilisateur n\'est connecté.'
+                code: 'failed',
+                message: "Aucun utilisateur n\'est connecté."
             });
         }
 
