@@ -23,7 +23,7 @@ router
             if (exist) {
                 return res.json({
                     status: 'failed',
-                    message: 'Adresse mail déjà enregistré.'
+                    message: 'Adresse mail déjà enregistrée.'
                 });
             }
 
