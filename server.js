@@ -26,6 +26,7 @@ const affectationRoutes = require('./routes/affectation');
 const reservationRoutes = require('./routes/reservation');
 const prestationRoutes = require('./routes/prestation');
 const catTravailRoutes = require('./routes/categorieTravail');
+const emailRoutes = require('./routes/email');
 
 const errorHandlers = require('./controllers/errors/index');
 const middlewares = require('./middlewares/authorization');
@@ -73,6 +74,7 @@ app.use('/api/affectation', affectationRoutes);
 app.use('/api/reservation', reservationRoutes);
 app.use('/api/prestation', prestationRoutes);
 app.use('/api/categorie_travail', catTravailRoutes);
+app.use('/api/email_registry', emailRoutes);
 
 /**
  * Error handlers
