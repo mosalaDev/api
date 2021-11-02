@@ -9,6 +9,8 @@ exports.sendToken = async (tel) => {
             tel = "+243".concat(tel.toString().slice(1));
         } else if (tel.toString().slice(0, 2) === "00") {
             tel = "+".concat(tel.toString().slice(2));
+        } else if (tel.toString()[0] === "8" || tel.toString()[0] === "9") {
+            tel = "+243".concat(tel.toString());
         }
 
         try {
@@ -37,6 +39,8 @@ exports.verifyToken = async (tel, code) => {
             tel = tel = "+243".concat(tel.toString().slice(1));
         } else if (tel.toString().slice(0, 1) === "00") {
             tel = "+".concat(tel.toString().slice(2));
+        } else if (tel.toString()[0] === "8" || tel.toString()[0] === "9") {
+            tel = "+243".concat(tel.toString());
         }
 
         try {

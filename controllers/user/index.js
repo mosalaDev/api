@@ -18,10 +18,19 @@ exports.create_user = async (req, res, next) => {
             return next(user_username_exist);
         }
 
+        let tel = data.tel;
+        if (tel.toString().slice(0, 1) === "00") {
+            tel = "0".concat(data.tel.toString().slice(2));
+        } else if (data.tel.toString()[0] === "8" || data.tel.toString()[0] === "9") {
+            tel = "0".concat(data.tel.toString());
+        } else if (tel.toString().slice(0, 3) === "+243") {
+            tel = "0".concat(data.tel.toString().slice(3));
+        }
+
         const pass = await bcrypt.hash(data.password, 10);
 
         await User.create({
-            username: data.tel,
+            username: tel,
             nom: data.nom,
             postnom: data.postnom,
             prenom: data.prenom,
@@ -29,7 +38,7 @@ exports.create_user = async (req, res, next) => {
             ville: data.ville,
             commune: data.commune,
             quartier: data.quartier,
-            tel: data.tel,
+            tel: tel,
             email: data.email,
             mot_passe: pass,
         });
