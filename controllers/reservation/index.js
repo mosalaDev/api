@@ -12,7 +12,7 @@ const Aff = db.affectation;
 const Art = db.artisan;
 const CanceledRes = db.reservation_annulee;
 
-const email = require('../../config/mailer');
+const getMailer = require('../../config/mailer');
 
 exports.create_reservation = async (req, res, next) => {
     try {
@@ -72,7 +72,7 @@ exports.create_reservation = async (req, res, next) => {
                     reservationId: reserv.id
                 };
             });
-            rTravaux = await ResTravail.bulkCreate(travs);
+            await ResTravail.bulkCreate(travs);
         }
 
         const rT = (await ResTravail.findAll({
@@ -85,10 +85,12 @@ exports.create_reservation = async (req, res, next) => {
             }
         })).map(rt => rt.travail);
 
+        const email = await getMailer();
+
         email.send({
             template: 'reservation',
             message: {
-                to: 'samkin1997@gmail.com,elkatalayi01@gmail.com'
+                to: 'samkin1997@gmail.com,elkatalayi01@gmail.com,olangiarish@gmail.com'
             },
             locals: {
                 service: service.nom_service,
