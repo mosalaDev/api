@@ -75,35 +75,35 @@ exports.create_reservation = async (req, res, next) => {
             await ResTravail.bulkCreate(travs);
         }
 
-        const rT = (await ResTravail.findAll({
-            where: {
-                reservationId: reserv.id
-            },
-            include: {
-                model: Work,
-                as: 'travail'
-            }
-        })).map(rt => rt.travail);
+        // const rT = (await ResTravail.findAll({
+        //     where: {
+        //         reservationId: reserv.id
+        //     },
+        //     include: {
+        //         model: Work,
+        //         as: 'travail'
+        //     }
+        // })).map(rt => rt.travail);
 
-        const email = await getMailer();
+        // const email = await getMailer();
 
-        email.send({
-            template: 'reservation',
-            message: {
-                to: 'samkin1997@gmail.com,elkatalayi01@gmail.com,olangiarish@gmail.com'
-            },
-            locals: {
-                service: service.nom_service,
-                works: rT,
-                tel: user.tel,
-                details: reserv.details,
-                address: `${reserv.commune}, ${reserv.quartier} ${reserv.avenue} ${reserv.numero}`,
-                date: reserv.date_w.toLocaleDateString('en-GB'),
-                urgence: reserv.gavite === "urgence" ? true : false
-            }
-        }).catch((err) => {
-            console.log(err);
-        });
+        // email.send({
+        //     template: 'reservation',
+        //     message: {
+        //         to: 'samkin1997@gmail.com' //elkatalayi01@gmail.com,olangiarish@gmail.com'
+        //     },
+        //     locals: {
+        //         service: service.nom_service,
+        //         works: rT,
+        //         tel: user.tel,
+        //         details: reserv.details,
+        //         address: `${reserv.commune}, ${reserv.quartier} ${reserv.avenue} ${reserv.numero}`,
+        //         date: reserv.date_w.toLocaleDateString('en-GB'),
+        //         urgence: reserv.gavite === "urgence" ? true : false
+        //     }
+        // }).catch((err) => {
+        //     console.log(err);
+        // });
 
         return res.json({
             ...reserv.dataValues,

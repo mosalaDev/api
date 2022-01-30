@@ -1,0 +1,90 @@
+.main-content .filters {
+    margin-top: 0
+}
+
+.reservation-container {
+    background-color: #fff;
+}
+.table-container{
+    box-shadow: rgb(158 158 158 / 25%) 0px 1px 0px 0px,  rgb(158 158 158 / 25%) 0px -1px 0px 0px,  rgb(158 158 158 / 25%) -1px 0px 0px 0px,  rgb(158 158 158 / 25%) 1px 0px 0px 0px;
+    background-color: #fff;
+    margin-top: 20px;
+}
+
+.table-container th,
+.table-container td {
+    padding: 8px;
+    text-align: start;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100px;
+}
+
+.table-container tr:last-child td{
+    border-bottom: none;
+}
+
+.filtered-content {
+    padding: 20px 0;
+}
+
+.main-content .actions {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    border-top: 1px solid #eaeaea;
+    margin-top: 20px;
+    padding-top: 20px;
+    flex-wrap: wrap;
+}
+
+.main-content .actions > button {
+    margin-bottom: 10px;
+}
+.main-content .actions > button:not(:last-child) {
+    margin-right: 10px;
+}
+
+.dash-reserv .reserv-data {
+    max-width: fit-content;
+}
+.dash-reserv .reserv-data p {
+    justify-content: flex-start;
+    margin-bottom: 3px;
+}
+
+.dash-reserv .value {
+    margin-left: 10px;
+    padding: 3px 10px;
+    border: 1px solid #eaeaea;
+    border-radius: 15px;
+    display: inline-block
+}
+
+.primary-value {
+    background: #0230ff;
+    border-color: #0230ff!important;
+    color: #fff;
+    font-weight: 500
+}
+
+.secondary-value {
+    background: #ff7a00;
+    border-color: #ff7a00!important;
+    color: #fff;
+    font-weight: 500
+}
+
+@media (max-width: 600px) {
+    .table-container th,
+    .table-container td {
+        max-width: 80px;
+    }
+    .table-container td {
+        white-space: normal;
+    }
+    .tab {
+        flex: auto;
+    }
+}

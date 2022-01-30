@@ -5,6 +5,7 @@ import AppBar from '../../component/AppBar';
 import { makeStyles } from '@mui/styles';
 import { useMediaQuery } from '@mui/material';
 import AsideBar from '../../component/AsideBar';
+import SingleReservation from '../../pages/Reservations/SingleReservation';
 
 export default function MainNavigation() {
     const match = useMediaQuery("(max-width: 800px)");
@@ -47,7 +48,8 @@ export default function MainNavigation() {
             <main className={classes.main}>
                 <Switch>
                     <Route path="/techniciens/:id" component={SingleTechnician} />
-                    <Route path="/réservations" component={Reservations} />
+                    <Route path="/reservations/:id" component={SingleReservation} />
+                    <Route path="/reservations" component={Reservations} />
                     <Route path="/affectations" component={Affectations} />
                     <Route path="/parametres" component={Parametres} />
                     <Route path="/techniciens" component={Techniciens} />

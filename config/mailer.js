@@ -14,7 +14,7 @@ const OAuth2Client = new google.auth.OAuth2(
 	REDIRECT_URI
 );
 
-OAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+OAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN, token_type: "Bearer", scope: "https://mail.google.com/" });
 
 module.exports = async () => {
     // Generate the accessToken on the fly
@@ -22,7 +22,9 @@ module.exports = async () => {
 
 	// Create the email envelope (transport)
 	const transport = nodemailer.createTransport({
-		service: "gmail",
+		service: "smtp.gmail.com",
+		port: 465,
+		secure: true,
 		auth: {
 			type: "OAuth2",
 			user: CLIENT_EMAIL,

@@ -63,7 +63,7 @@ export default function AsideBar({ width, setTitle }) {
                     <StyledLink exact activeClassName={classes.active} className={classes.menuItem} to={`/`} onClick={() => toggleActive('Home')}>
                         Home
                     </StyledLink>
-                    <StyledLink activeClassName={classes.active} className={classes.menuItem} to={`/réservations`} onClick={() => toggleActive('Réservations')}>
+                    <StyledLink activeClassName={classes.active} className={classes.menuItem} to={`/reservations`} onClick={() => toggleActive('Réservations')}>
                         Réservations
                     </StyledLink>
                     <StyledLink activeClassName={classes.active} className={classes.menuItem} to={`/affectations`} onClick={() => toggleActive('Affectations')}>
